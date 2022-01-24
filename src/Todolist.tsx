@@ -5,7 +5,7 @@ type TodoListPropsType = {
   title: string;
   task: Array<TaskType>;
   removeTask: (id: number) => void;
-  setFilter: (filter: FilterValueType) => void;
+  changeFilter: (filter: FilterValueType) => void;
 };
 
 export const TodoList = (props: TodoListPropsType) => {
@@ -27,9 +27,9 @@ export const TodoList = (props: TodoListPropsType) => {
       </div>
       <ul>{tasksElements}</ul>
       <div>
-        <button onClick={() => props.setFilter('all')}>All</button>
-        <button onClick={() => props.setFilter('active')}>Active</button>
-        <button onClick={() => props.setFilter('completed')}>Completed</button>
+        <button onClick={() => props.changeFilter('all')}>All</button>
+        <button onClick={() => props.changeFilter('active')}>Active</button>
+        <button onClick={() => props.changeFilter('completed')}>Completed</button>
       </div>
     </div>
   );

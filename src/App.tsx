@@ -28,13 +28,7 @@ function App() {
     setTask(filteredTask);
   };
 
-  let taskForRender = task;
-
-  //if (filter === 'active') {
-  //   taskForRender = task.filter(list => !list.isDone);
-  //  } else if (filter === 'completed') {
-  // taskForRender = task.filter(list => list.isDone);
-  //  }
+  const changeFilter = (filter: FilterValueType) => setFilter(filter);
 
   const getTaskForRender = () => {
     switch (filter) {
@@ -54,7 +48,7 @@ function App() {
         title={todoListTitle1}
         task={getTaskForRender()}
         removeTask={removeTask}
-        setFilter={setFilter}
+        changeFilter={changeFilter}
       />
     </div>
   );
