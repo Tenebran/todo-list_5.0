@@ -49,6 +49,7 @@ function App() {
         task={getTaskForRender()}
         removeTask={removeTask}
         changeFilter={changeFilter}
+        filter={filter}
       />
     </div>
   );
