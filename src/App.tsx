@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { v1 } from 'uuid';
 import './App.css';
 import { TodoList } from './Todolist';
 
 export type TaskType = {
   title: string;
   isDone: boolean;
-  id: number;
+  id: string;
 };
 
 export type FilterValueType = 'all' | 'active' | 'completed';
@@ -18,17 +19,29 @@ function App() {
 
   const [filter, setFilter] = useState<FilterValueType>('all');
   const [task, setTask] = useState<Array<TaskType>>([
-    { title: 'HTML&CSS', isDone: true, id: 1 },
-    { title: 'JS', isDone: false, id: 2 },
-    { title: 'React', isDone: true, id: 3 },
+    { title: 'HTML&CSS', isDone: true, id: v1() },
+    { title: 'JS/TS', isDone: false, id: v1() },
+    { title: 'React', isDone: true, id: v1() },
   ]);
 
-  const removeTask = (id: number) => {
-    const filteredTask: Array<TaskType> = task.filter(list => list.id !== id);
-    setTask(filteredTask);
+  const removeTask = (id: string) => {
+    setTask(task.filter(list => list.id !== id));
   };
 
   const changeFilter = (filter: FilterValueType) => setFilter(filter);
+
+  const addTask = () => {
+    const newTask: TaskType = {
+      title: 'Hell',
+      isDone: false,
+      id: v1(),
+    };
+
+    const copyTask = [...task];
+    copyTask.unshift(newTask);
+
+    setTask(copyTask);
+  };
 
   const getTaskForRender = () => {
     switch (filter) {

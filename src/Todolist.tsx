@@ -4,7 +4,7 @@ import { FilterValueType, TaskType } from './App';
 type TodoListPropsType = {
   title: string;
   task: Array<TaskType>;
-  removeTask: (id: number) => void;
+  removeTask: (id: string) => void;
   changeFilter: (filter: FilterValueType) => void;
   filter: FilterValueType;
 };
